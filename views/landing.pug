@@ -1,0 +1,26 @@
+doctype html 
+
+html(lang="en-US")
+
+  head 
+    title GitHub PR info
+    meta(charset="UTF-8")
+    link(rel="stylesheet" href="/stylesheets/whitespace-reset.css")
+    link(rel="stylesheet" href="/stylesheets/application.css")
+    script(src="/javascripts/application.js")
+  
+  body 
+    header 
+      h1 GitHub Pull Request Information
+      br
+      form(action=`/users/signin` method="post")    
+        dt 
+          label(for="username") Repository URL: 
+        dd 
+          input(type="text"
+                name="url"
+                placeholder="https://..."
+                value=url)
+        fieldset.actions  
+          input(type="submit" value="Get Info")
+
