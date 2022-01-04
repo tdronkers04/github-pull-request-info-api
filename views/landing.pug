@@ -13,13 +13,13 @@ html(lang="en-US")
     header 
       h1 GitHub Pull Request Information
       br
-      form(action=`/users/signin` method="post")    
+      form(action=`/` method="post")    
         dt 
-          label(for="username") Repository URL: 
+          label(for="url") Repository URL: 
         dd 
           input(type="text"
                 name="url"
-                placeholder="https://..."
+                placeholder="https://api.github.com/user/repo"
                 value=url)
         fieldset.actions  
           input(type="submit" value="Get Info")
