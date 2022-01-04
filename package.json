@@ -1,0 +1,11 @@
+{
+  "name": "production",
+  "version": "1.0.0",
+  "description": "A REST API to retrieve information on github repository pull requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Dronkers",
+  "license": "ISC"
+}
