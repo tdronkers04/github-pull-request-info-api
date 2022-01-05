@@ -28,7 +28,12 @@ app.post("/",
   if (!errors.isEmpty()) {
     throw new Error ('Error! Invalid GitHub Repository URL');
   } else {
-    console.log(req.body.url);
+    const params = /[\w\-]+/g;
+    let url = req.body.url;
+    let [userName, repoName] = url.match(params).filter(word => {
+      return !['https', 'github', 'com'].includes(word);
+    }) ;
+    console.log(userName, repoName);
     res.render("results");
   }
 });
