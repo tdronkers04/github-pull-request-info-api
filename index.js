@@ -18,27 +18,21 @@ app.get("/", (req, res) => {
 app.post("/", 
 [
   body("url")
-    .isURL()
+    .custom(value => {
+      const URL_REGEX = new RegExp(/^https:\/\/github.com\/[\w]+\/[\w]+/);
+      return URL_REGEX.test(value);
+    })
 ], 
 (req, res) => {
   let errors = validationResult(req);
   if (!errors.isEmpty()) {
-    throw new Error ('Error! Invalid URL');
+    throw new Error ('Error! Invalid GitHub Repository URL');
   } else {
     console.log(req.body.url);
     res.render("results");
   }
-})
-
-
-
-
+});
 
 app.listen(port, host, () => {
   console.log(`listening on port ${port} of ${host}...`);
 });
-
-
-
-
-
