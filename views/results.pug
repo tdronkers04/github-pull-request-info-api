@@ -13,14 +13,17 @@ html(lang="en-US")
     header 
       h1 GitHub Pull Request Information
     main 
-      h2= `Below are the open pull requests and total commits for ${url}:`
+      h2= `Below are the open pull requests and commit data for ${url}:`
     ul
       each pullRequest in pullRequests
         li
           ul  
-            li= `PR Title => ${pullRequest.title}`
-            li= `Total Commits => ${pullRequest.commitsData}`
-    
+            li#prHeader= `PR Title => ${pullRequest.title}`
+            li= `Total Commits => ${pullRequest.commitsData.numberCommits}`
+            li= `Last Commit Date => ${pullRequest.commitsData.lastCommitDate}`
+            li= `Last Commit Author => ${pullRequest.commitsData.lastCommitAuthor}`
+            li= `Last Commit Message => ${pullRequest.commitsData.lastCommitMsg}`
+        br
     footer
       form(action=`/` method="get")    
           fieldset.actions  

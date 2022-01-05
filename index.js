@@ -1,5 +1,6 @@
 const express = require('express');
 const { body, validationResult } = require("express-validator");
+const fetchCompletePrData = require('./lib/callApi');
 
 const app = express();
 const port = 3000;
@@ -23,7 +24,7 @@ app.post("/",
       return URL_REGEX.test(value);
     })
 ], 
-(req, res) => {
+async (req, res) => {
   let errors = validationResult(req);
   if (!errors.isEmpty()) {
     throw new Error ('Error! Invalid GitHub Repository URL');
@@ -32,18 +33,10 @@ app.post("/",
     let url = req.body.url;
     let [userName, repoName] = url.match(params).filter(word => {
       return !['https', 'github', 'com'].includes(word);
-    }) ;
-
-    let pullRequests = [{ // sample data
-      title: 'feat: default `unknownKeys` strategy can be overridden by parse param',
-      commitsURL: 'https://api.github.com/repos/colinhacks/zod/pulls/838/commits',
-      commitsData: 1
-    },
-    {
-      title: 'Remove duplicated `processCreateParams` in `ZodNumber`',
-      commitsURL: 'https://api.github.com/repos/colinhacks/zod/pulls/766/commits',
-      commitsData: 1
-    }];
+    });
+    
+    let pullRequests = await fetchCompletePrData(userName, repoName);
+    
     res.render("results", {
       pullRequests,
       url
