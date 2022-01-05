@@ -33,8 +33,21 @@ app.post("/",
     let [userName, repoName] = url.match(params).filter(word => {
       return !['https', 'github', 'com'].includes(word);
     }) ;
-    console.log(userName, repoName);
-    res.render("results");
+
+    let pullRequests = [{ // sample data
+      title: 'feat: default `unknownKeys` strategy can be overridden by parse param',
+      commitsURL: 'https://api.github.com/repos/colinhacks/zod/pulls/838/commits',
+      commitsData: 1
+    },
+    {
+      title: 'Remove duplicated `processCreateParams` in `ZodNumber`',
+      commitsURL: 'https://api.github.com/repos/colinhacks/zod/pulls/766/commits',
+      commitsData: 1
+    }];
+    res.render("results", {
+      pullRequests,
+      url
+    });
   }
 });
 

@@ -3,17 +3,23 @@ body {
   font: normal 20px "PT Sans", Helvetica, Arial, sans-serif;
 }
 
-body > header {
+body > header, main, footer {
   margin: 0 auto;
   max-width: 1000px;
   padding: 55px 0 35px;
+}
+
+li {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 25px 0 0;
 }
 
 body > header h1 {
   color: black;
   display: inline-block;
   font-size: 30px;
-  width: 38%;
+  width: 50%;
 }
 
 

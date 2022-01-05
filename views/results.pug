@@ -1,1 +1,29 @@
-h1 this is the results.pug page
+doctype html 
+
+html(lang="en-US")
+
+  head 
+    title GitHub PR info
+    meta(charset="UTF-8")
+    link(rel="stylesheet" href="/stylesheets/whitespace-reset.css")
+    link(rel="stylesheet" href="/stylesheets/application.css")
+    script(src="/javascripts/application.js")
+  
+  body 
+    header 
+      h1 GitHub Pull Request Information
+    main 
+      h2= `Below are the open pull requests and total commits for ${url}:`
+    ul
+      each pullRequest in pullRequests
+        li
+          ul  
+            li= `PR Title => ${pullRequest.title}`
+            li= `Total Commits => ${pullRequest.commitsData}`
+    
+    footer
+      form(action=`/` method="get")    
+          fieldset.actions  
+            input(type="submit" value="Search Again")
+        
+    
