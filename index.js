@@ -1,6 +1,6 @@
 const express = require('express');
 const { body, validationResult } = require("express-validator");
-const fetchCompletePrData = require('./lib/callApi');
+const { fetchCompletePrData } = require('./lib/callApi');
 
 const app = express();
 const port = 3000;
